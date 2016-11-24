@@ -7,7 +7,7 @@
 
   //get yes24 code and HQ link for the title
   //let url = document.documentURI;
-  let yCode = url.slice(url.indexOf("/goods/")+7);
+  let yCode = url.slice(url.toLowerCase().indexOf("/goods/")+7);
   if(yCode.indexOf("?") > -1) yCode = yCode.substr(0, yCode.indexOf("?"));
 
   let pubDateStr = document.getElementsByClassName('pdDate')[0].innerText.slice(0, 13);
