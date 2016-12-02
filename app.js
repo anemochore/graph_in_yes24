@@ -8,7 +8,7 @@
 
   //get yes24 code and HQ link for the title
   //let url = document.documentURI;
-  let yCode = url.slice(url.indexOf("/goods/") + 7);
+  let yCode = url.slice(url.toLowerCase().indexOf("/goods/") + 7);
   if(yCode.indexOf("?") > -1) yCode = yCode.slice(0, yCode.indexOf("?"));
 
   const todayDate = new Date();
