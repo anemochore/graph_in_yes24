@@ -13,7 +13,7 @@
 
   const todayDate = new Date();
 
-  const pubDateWebStr = document.getElementsByClassName('pdDate')[0].innerText.slice(0, 13);
+  const pubDateWebStr = document.getElementsByClassName('gd_date')[0].innerText.slice(0, 13);
   let pubDate = new Date(pubDateWebStr.slice(0,4), pubDateWebStr.slice(6,8) - 1, pubDateWebStr.slice(10,12) - 14);
   if(pubDate >= todayDate)
     pubDate = new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate() - 14);
