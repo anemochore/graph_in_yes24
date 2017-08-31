@@ -3,7 +3,7 @@
  */
 
 (function() {
-  const HQ_URL_WITHOUT_SLASH = "http://59.6.230.250/";
+  const HQ_URL_WITHOUT_SLASH = "http://192.168.50.7";
   const HQ_START_DATE = new Date(2012, 0, 3);
 
   //get yes24 code and HQ link for the title
