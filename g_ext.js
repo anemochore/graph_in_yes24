@@ -1,9 +1,12 @@
 (() => {
   const UNIQUE_ID = 'fy_div';
-  
-  const DIV = document.getElementById(UNIQUE_ID);
-  const IFRAME = DIV.getElementsByTagName('iframe')[0];
-  const DOC = IFRAME.contentDocument;
+  let DOC = document;
+  let DIV = document.getElementById(UNIQUE_ID);
+
+  if(!DIV) 
+    DIV = document.body;
+  else 
+    DOC = DIV.getElementsByTagName('iframe')[0].contentDocument;
   
   const UNIQUE_ID_EXT = 'fy_div_ext';
   const GRAPH_NUMBER = 3;
