@@ -58,17 +58,26 @@
     
     for(let i=38; i<dates.length; i++) 
       MACD_S[i] = average(MACD.slice(i-9, i+1));
-    
-    for(let i=38; i<dates.length; i++) 
-      OSC[i] = [dates[i], MACD_S[i] - MACD[i]];
-    
+       
     let MA30_MA10 = [], MACD_MACD_S = [];
+    for(let i=0; i<8; i++) 
+      MA30_MA10[i] = [dates[i], null, null];
     for(let i=9; i<dates.length; i++) 
-      MA30_MA10[i] = [dates[i], MA30[i-9], MA10[i-9]];
+      MA30_MA10[i] = [dates[i], MA30[i], MA10[i]];
     
+    for(let i=0; i<28; i++) 
+      MACD_MACD_S[i] = [dates[i], null, null];
     for(let i=29; i<dates.length; i++) 
-      MACD_MACD_S[i] = [dates[i], MACD[i-29], MACD_S[i-29]];
+      MACD_MACD_S[i] = [dates[i], MACD[i], MACD_S[i]];
     
+    for(let i=0; i<37; i++) 
+      OSC[i] = [dates[i], 0];
+    for(let i=38; i<dates.length; i++) 
+      OSC[i] = [dates[i], MACD[i] - MACD_S[i]];
+    
+    console.log(MA30_MA10)
+    console.log(MACD_MACD_S)
+    console.log(OSC)
     MA30_MA10 = MA30_MA10.filter(t => t);
     MACD_MACD_S = MACD_MACD_S.filter(t => t);
     OSC = OSC.filter(t => t);
@@ -81,7 +90,7 @@
     function drawChart(columns, rows, id, type = 'line') {
       //by 배용석
       const OPT = { 
-        width: 1000, height: 180, fontSize: 10,
+        width: 1800, height: 300, fontSize: 10,
         //title: '어흥' ,
         titleTextStyle: {color: 'black', fontName: '굴림', fontSize: 13}
       }; 
