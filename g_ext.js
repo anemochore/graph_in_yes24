@@ -75,19 +75,20 @@
     for(let i=38; i<dates.length; i++) 
       OSC[i] = [dates[i], MACD[i] - MACD_S[i]];
     
-    console.log(MA30_MA10)
-    console.log(MACD_MACD_S)
-    console.log(OSC)
     MA30_MA10 = MA30_MA10.filter(t => t);
     MACD_MACD_S = MACD_MACD_S.filter(t => t);
     OSC = OSC.filter(t => t);
     
-    drawChart([['string', '날짜'], ['number', 'MA30'], ['number', 'MA10']], MA30_MA10, ids[0]);
-    drawChart([['string', '날짜'], ['number', 'MACD'], ['number', 'MACD-S']], MACD_MACD_S, ids[1]);
-    drawChart([['string', '날짜'], ['number', '오실레이터']], OSC, ids[2], 'column');
+    const desc = ['단기 이평선이 장기 이평선보다 낮은 위치를 유지하면 판매지수는 상승세<br>단기 이평선이 장기 이평선보다 높은 위치를 유지하면 판매지수가 하락세',
+                  'MACD: 단기 이평선과 장기 이평선의 보합세를 계산하기 위한 지표',
+                  '오실레이터: MACD의 수렴확산과 모멘텀을 보기 위한 지표로 선그래프로 된 MACD의 값 변동을 보다 보기 쉽게 막대그래프 형식으로 고안<br><br>더 자세한 내용은 <a href="https://docs.google.com/presentation/d/1UhkxBNvQQgGY9hcsuNgUOFA7ji7f-XWxmq6cxKVwJck/">슬라이드 참고</a>.'];
+    
+    drawChart([['string', '날짜'], ['number', 'MA30'], ['number', 'MA10']], MA30_MA10, ids[0], desc[0]);
+    drawChart([['string', '날짜'], ['number', 'MACD'], ['number', 'MACD-S']], MACD_MACD_S, ids[1], desc[1]);
+    drawChart([['string', '날짜'], ['number', '오실레이터']], OSC, ids[2], desc[2], 'column');
     
     
-    function drawChart(columns, rows, id, type = 'line') {
+    function drawChart(columns, rows, id, desc, type = 'line') {
       //by 배용석
       const OPT = { 
         width: 1800, height: 300, fontSize: 10,
@@ -100,11 +101,16 @@
         data.addColumn(columns[i][0], columns[i][1]);
       data.addRows(rows);
 
-      let chart;
-      if(type==='column') chart = new google.visualization.ColumnChart(DOC.getElementById(id));
-      else                chart = new google.visualization.LineChart(DOC.getElementById(id));
+      let chart, el;
+      el = DOC.getElementById(id);
+      if(type==='column') chart = new google.visualization.ColumnChart(el);
+      else                chart = new google.visualization.LineChart(el);
       
       chart.draw(data, OPT);
+      let div = document.createElement('div');
+      div.innerHTML = desc;
+      div.align = 'center';
+      el.appendChild(div);
     }
     
     function average(arr) {
