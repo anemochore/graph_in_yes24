@@ -80,8 +80,8 @@
     OSC = OSC.filter(t => t);
     
     const desc = ['단기 이평선(MA10)이 장기 이평선(MA30)보다 낮은 위치를 유지하면 판매지수는 하락세<br>단기 이평선(MA10)이 장기 이평선(MA30)보다 높은 위치를 유지하면 판매지수가 상승세',
-                  'MACD: 단기 이평선에서 장기 이평선의 값을 뺀 지표로 판매지수의 상승-하락세를 계산하기 위한 지표 마이너스(-)로 내려갈 경우 하락 추세 강함<br>MACD-S는 MACD의 10일이 치동평균 값으로 MACD-S가 MACD보다 높은 위치를 가지면 판매지수가 ',
-                  '오실레이터: MACD의 수렴확산과 모멘텀을 보기 위한 지표로 선그래프로 된 MACD의 값 변동을 보다 보기 쉽게 막대그래프 형식으로 고안<br><br>더 자세한 내용은 <a href="https://docs.google.com/presentation/d/1UhkxBNvQQgGY9hcsuNgUOFA7ji7f-XWxmq6cxKVwJck/">슬라이드 참고</a>.'];
+                  'MACD: 단기 이평선에서 장기 이평선의 값을 뺀 지표로 판매지수의 상승-하락세를 계산하기 위한 지표. 마이너스(-)로 내려갈 경우 하락 추세 강함<br>MACD-S는 MACD의 10일 이동평균 값으로 MACD-S가 MACD보다 높은 위치를 가지면 판매지수가 하락세',
+                  '오실레이터: MACD의 수렴확산과 모멘텀을 보기 위한 지표로 선그래프로 된 MACD의 값 변동을 보기 쉽게 막대그래프 형식으로 고안<br><br>더 자세한 내용은 <a href="https://docs.google.com/presentation/d/1UhkxBNvQQgGY9hcsuNgUOFA7ji7f-XWxmq6cxKVwJck/">슬라이드 참고</a>.'];
     
     drawChart([['string', '날짜'], ['number', 'MA30'], ['number', 'MA10']], MA30_MA10, ids[0], desc[0]);
     drawChart([['string', '날짜'], ['number', 'MACD'], ['number', 'MACD-S']], MACD_MACD_S, ids[1], desc[1]);
